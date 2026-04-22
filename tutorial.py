@@ -161,13 +161,13 @@ def _pages():
                     (g1, 'Round 3'),
                     (g2, 'Two ghosts'),
                 ]},
-                {'text': 'Avoid ghosts at all costs!\nIf a ghost touches you, the round restarts.'},
+                {'text': 'When the round ends, you can choose:\n\n  •  Restart Round → Ghost recordings are kept,\n     round replays from the beginning\n\n  •  Retry Stage → Erases all ghost recordings\n     and restarts from Round 1'},
             ],
         },
         {
             'title': '5 / 7   Score & Stats',
             'sections': [
-                {'text': 'Score is calculated when you clear a stage:\n\n   Score  =  10,000  −  (time × 10)\n\nFaster clears = higher scores!'},
+                {'text': 'Score is calculated when you clear a stage:\n\n   Score  =  10,000  -  (time x 10)\n\nFaster clears = higher scores!'},
                 {'text': 'Check the Leaderboard to compare scores\nand ghost hits with other players.\nCompete with friends for the top spot!'},
                 {'text': 'The Stats menu (Main Menu → Stats) has two main sections:\n\n  •  Data Analysis Report (Game Stats) — overall\n data across all players\n\n  •  Player Stats — search by name to view\n     your own history and performance'},
             ],

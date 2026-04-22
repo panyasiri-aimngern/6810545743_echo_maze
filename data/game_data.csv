@@ -1,0 +1,371 @@
+player,stage,round,survival_time,steps,items,ghost_hits,retries,score,total_score,stage_total_hits,completed,is_stage_clear
+nw,1,1,55.88,142,3,0,0,9442,,,True,False
+nw,1,2,22.01,128,3,0,0,9222,,,True,False
+nw,1,3,35.51,119,2,1,0,9222,,,False,False
+nw,1,3,10.3,68,3,2,0,9222,,,False,False
+nw,1,3,11.7,72,3,3,0,9222,,,False,False
+nw,1,3,22.83,114,3,3,0,8993,,,True,False
+nw,1,3,100.72,384,3,3,0,8993,8993,3,True,True
+nw,1,1,22.67,102,3,0,0,9774,,,True,False
+nw,1,2,16.04,106,3,0,0,9613,,,True,False
+nw,1,3,23.6,84,3,1,0,9613,,,False,False
+nw,2,1,9.06,60,3,0,0,9910,,,True,False
+nw,2,2,4.33,22,1,1,0,9910,,,False,False
+nw,2,2,15.8,70,3,1,0,9752,,,True,False
+nw,2,3,8.38,62,3,1,0,9668,,,True,False
+nw,2,3,33.24,192,3,1,0,9668,9668,1,True,True
+e,1,1,12.14,100,3,0,0,9879,,,True,False
+e,1,2,15.44,104,3,0,0,9725,,,True,False
+e,1,3,16.72,112,3,0,0,9558,,,True,False
+e,1,3,44.3,316,3,0,0,9558,9558,0,True,True
+e,2,1,7.97,60,3,0,0,9921,,,True,False
+e,2,2,14.24,76,3,0,0,9778,,,True,False
+e,2,3,14.61,66,3,0,0,9632,,,True,False
+e,2,3,36.82,202,3,0,0,9632,9632,0,True,True
+nw,3,1,15.14,87,4,0,0,9849,,,True,False
+nw,3,2,4.05,8,0,1,0,9849,,,False,False
+nw,3,2,4.04,6,0,2,0,9849,,,False,False
+nw,3,2,3.7,6,0,3,0,9849,,,False,False
+nw,3,2,3.94,6,0,4,0,9849,,,False,False
+nw,1,1,22.4,100,3,0,0,9777,,,True,False
+nw,1,2,15.86,104,3,0,0,9618,,,True,False
+nw,1,3,9.38,64,2,1,0,9618,,,False,False
+nw,1,3,10.51,66,3,2,0,9618,,,False,False
+nw,1,3,10.26,68,3,3,0,9618,,,False,False
+nw,1,3,16.51,104,3,3,0,9453,,,True,False
+nw,1,3,54.77,308,3,3,0,9453,9453,3,True,True
+nw,1,1,12.37,100,3,0,0,9877,,,True,False
+nw,1,2,15.14,102,3,0,0,9725,,,True,False
+nw,1,3,15.9,108,3,0,0,9566,,,True,False
+nw,1,3,43.41,310,3,0,0,9566,9566,0,True,True
+ว้าว,1,1,12.54,100,3,0,0,9875,,,True,False
+ว้าว,1,2,15.33,102,3,0,0,9722,,,True,False
+ว้าว,1,3,15.55,104,3,0,0,9566,,,True,False
+ว้าว,1,3,43.42,306,3,0,0,9566,9566,0,True,True
+ว้าว,2,1,10.38,60,3,0,0,9897,,,True,False
+ว้าว,2,2,13.71,72,3,0,0,9760,,,True,False
+ว้าว,2,3,12.89,72,3,0,0,9631,,,True,False
+ว้าว,2,3,36.97,204,3,0,0,9631,9631,0,True,True
+ว้าว,3,1,12.4,85,4,0,0,9876,,,True,False
+ว้าว,3,2,16.31,89,4,0,0,9713,,,True,False
+ว้าว,3,3,17.62,91,4,0,0,9537,,,True,False
+ว้าว,3,3,46.33,265,4,0,0,9537,9537,0,True,True
+ว้าว,4,1,10.62,68,5,0,0,9894,,,True,False
+ว้าว,4,2,9.76,51,4,1,0,9894,,,False,False
+ว้าว,4,2,18.65,92,5,1,0,9708,,,True,False
+ว้าว,4,3,19.97,86,5,1,0,9508,,,True,False
+ว้าว,4,3,49.24,246,5,1,0,9508,9508,1,True,True
+ว้าว,5,1,18.34,122,7,0,0,9817,,,True,False
+ว้าว,5,2,25.9,128,7,0,0,9558,,,True,False
+ว้าว,5,3,25.58,130,7,0,0,9302,,,True,False
+ว้าว,5,3,69.82,380,7,0,0,9302,9302,0,True,True
+สมชาย,1,1,12.13,100,3,0,0,9879,,,True,False
+สมชาย,1,2,15.8,104,3,0,0,9721,,,True,False
+สมชาย,1,3,10.8,68,3,1,0,9721,,,False,False
+สมชาย,1,3,5.07,20,1,2,0,9721,,,False,False
+ว้าว,1,1,12.37,100,3,0,0,9877,,,True,False
+ว้าว,1,2,15.54,100,3,0,0,9721,,,True,False
+ว้าว,1,3,15.2,102,3,0,0,9569,,,True,False
+ว้าว,1,3,43.12,302,3,0,0,9569,9569,0,True,True
+สมนึก,1,1,12.83,100,3,0,0,9872,,,True,False
+สมนึก,1,2,4.07,10,0,1,0,9872,,,False,False
+winner,1,1,13.12,100,3,0,0,9869,,,True,False
+winner,1,2,14.91,104,3,0,0,9720,,,True,False
+winner,1,3,19.29,93,3,1,0,9720,,,False,False
+winner,1,3,15.93,108,3,1,0,9561,,,True,False
+winner,1,3,43.96,312,3,1,0,9561,9561,1,True,True
+new,1,1,15.13,98,3,0,0,9849,,,True,False
+new,1,2,15.11,106,3,0,0,9698,,,True,False
+new,1,3,15.91,106,3,0,0,9539,,,True,False
+new,1,3,46.15,310,3,0,0,9539,9539,0,True,True
+new,1,1,15.03,112,3,0,0,9850,,,True,False
+new,1,2,7.06,36,1,1,0,9850,,,False,False
+new,1,1,15.76,118,3,0,0,9843,,,True,False
+new,1,2,6.83,44,1,1,0,9843,,,False,False
+new,1,2,11.92,96,3,2,0,9843,,,False,False
+nw,3,1,18.64,89,4,0,0,9814,,,True,False
+nw,3,2,6.2,42,3,1,0,9814,,,False,False
+nw,3,2,4.31,12,1,2,0,9814,,,False,False
+nw,3,2,3.8,8,0,3,0,9814,,,False,False
+nw,3,2,11.92,56,3,4,0,9814,,,False,False
+nw,2,1,15.76,70,3,0,0,9843,,,True,False
+nw,2,2,9.82,68,3,1,0,9843,,,False,False
+nw,2,2,8.65,60,3,1,0,9756,,,True,False
+nw,2,3,12.24,68,3,1,0,9634,,,True,False
+nw,2,3,36.64,198,3,1,0,9634,9634,1,True,True
+nw,3,1,13.43,89,4,0,0,9866,,,True,False
+nw,3,2,6.36,42,3,1,0,9866,,,False,False
+nw,3,1,12.06,87,4,0,0,9880,,,True,False
+nw,3,2,9.04,31,2,1,0,9880,,,False,False
+nw,3,2,6.12,47,3,2,0,9880,,,False,False
+e,3,1,11.82,87,4,0,0,9882,,,True,False
+e,3,2,5.67,24,2,1,0,9882,,,False,False
+e,3,2,2.99,0,0,2,0,9882,,,False,False
+nw,3,1,12.7,89,4,0,0,9873,,,True,False
+nw,3,2,17.14,97,4,0,0,9702,,,True,False
+nw,3,3,6.62,40,3,1,0,9702,,,False,False
+name,1,1,12.66,100,3,0,0,9874,,,True,False
+name,1,2,15.38,106,3,0,0,9720,,,True,False
+name,1,3,16.03,104,3,0,0,9560,,,True,False
+name,1,3,44.07,310,3,0,0,9560,9560,0,True,True
+name,2,1,10.14,66,3,0,0,9899,,,True,False
+name,2,2,14.86,74,3,0,0,9751,,,True,False
+name,2,3,14.37,66,3,0,0,9607,,,True,False
+name,2,3,39.37,206,3,0,0,9607,9607,0,True,True
+name,3,1,15.14,89,4,0,0,9849,,,True,False
+name,3,2,19.24,91,4,0,0,9657,,,True,False
+name,3,3,30.82,135,4,0,0,9348,,,True,False
+name,3,3,65.2,315,4,0,0,9348,9348,0,True,True
+name,4,1,12.52,78,5,0,0,9875,,,True,False
+name,4,2,13.19,76,5,0,0,9743,,,True,False
+name,4,3,18.06,94,5,0,0,9563,,,True,False
+name,4,3,43.77,248,5,0,0,9563,9563,0,True,True
+name,5,1,23.39,138,7,0,0,9767,,,True,False
+name,5,2,11.71,64,3,1,0,9767,,,False,False
+name,5,2,24.52,136,7,1,0,9521,,,True,False
+name,5,3,28.08,132,7,1,0,9241,,,True,False
+name,5,3,75.99,406,7,1,0,9241,9241,1,True,True
+ske23,1,1,12.44,100,3,0,0,9876,,,True,False
+ske23,1,2,15.46,110,3,0,0,9722,,,True,False
+ske23,1,3,13.3,76,2,1,0,9722,,,False,False
+ske23,1,3,22.31,149,3,2,0,9722,,,False,False
+ske23,1,1,11.57,100,3,0,0,9885,,,True,False
+ske23,1,2,15.16,104,3,0,0,9733,,,True,False
+ske23,1,3,16.39,104,3,0,0,9569,,,True,False
+ske23,1,3,43.11,308,3,0,0,9569,9569,0,True,True
+hello world,1,1,17.26,100,3,0,0,9828,,,True,False
+hello world,1,2,15.44,108,3,0,0,9673,,,True,False
+hello world,1,3,10.37,70,3,1,0,9673,,,False,False
+hello world,1,3,10.54,72,3,2,0,9673,,,False,False
+hello world,1,3,10.34,70,3,3,0,9673,,,False,False
+hello world,1,3,16.67,100,3,3,0,9507,,,True,False
+hello world,1,3,49.38,308,3,3,0,9507,9507,3,True,True
+สมชาย,1,1,11.2,100,3,0,0,9889,,,True,False
+สมชาย,1,2,16.2,120,3,0,0,9727,,,True,False
+สมชาย,1,3,9.71,75,3,1,0,9727,,,False,False
+สมชาย,1,3,18.1,104,3,1,0,9546,,,True,False
+สมชาย,1,3,45.49,324,3,1,0,9546,9546,1,True,True
+alexa,1,1,13.49,102,3,0,0,9866,,,True,False
+alexa,1,2,28.25,164,3,0,0,9583,,,True,False
+alexa,1,3,27.6,140,3,1,0,9583,,,False,False
+alexa,1,3,17.08,114,3,2,0,9583,,,False,False
+alexa,1,1,12.42,102,3,0,0,9876,,,True,False
+alexa,1,2,15.56,102,3,0,0,9721,,,True,False
+alexa,1,3,16.03,108,3,0,0,9560,,,True,False
+alexa,1,3,44.01,312,3,0,0,9560,9560,0,True,True
+alexa,2,1,8.45,62,3,0,0,9916,,,True,False
+alexa,2,2,13.72,74,3,0,0,9779,,,True,False
+alexa,2,3,13.68,84,3,0,0,9642,,,True,False
+alexa,2,3,35.84,220,3,0,0,9642,9642,0,True,True
+hello world,2,1,9.06,62,3,0,0,9910,,,True,False
+hello world,2,2,20.79,112,3,0,0,9702,,,True,False
+hello world,2,3,4.17,16,0,1,0,9702,,,False,False
+hello world,2,3,7.22,53,2,2,0,9702,,,False,False
+hello world,2,3,7.55,58,3,2,0,9627,,,True,False
+hello world,2,3,37.39,232,3,2,0,9627,9627,2,True,True
+hello world,3,1,12.44,85,4,0,0,9876,,,True,False
+hello world,3,2,15.23,111,4,0,0,9724,,,True,False
+hello world,3,3,20.57,93,4,0,0,9518,,,True,False
+hello world,3,3,48.25,289,4,0,0,9518,9518,0,True,True
+hello world,4,1,11.2,70,5,0,0,9888,,,True,False
+hello world,4,2,8.57,49,4,1,0,9888,,,False,False
+hello world,4,2,9.91,52,4,2,0,9888,,,False,False
+hello world,4,2,19.14,108,5,3,0,9888,,,False,False
+hello world,4,2,10.74,76,5,3,0,9781,,,True,False
+hello world,4,3,10.44,76,5,3,0,9677,,,True,False
+hello world,4,3,32.38,222,5,3,0,9677,9677,3,True,True
+hello world,5,1,18.42,126,7,0,0,9816,,,True,False
+hello world,5,2,25.31,134,7,0,0,9563,,,True,False
+hello world,5,3,24.08,132,7,0,0,9322,,,True,False
+hello world,5,3,67.81,392,7,0,0,9322,9322,0,True,True
+fah,1,1,15.58,100,3,0,0,9845,,,True,False
+fah,1,2,16.24,104,3,0,0,9682,,,True,False
+fah,1,3,15.72,106,3,0,0,9525,,,True,False
+fah,1,3,47.54,310,3,0,0,9525,9525,0,True,True
+fah,2,1,9.72,62,3,0,0,9903,,,True,False
+fah,2,2,13.04,86,3,0,0,9773,,,True,False
+fah,2,3,6.58,34,2,1,0,9773,,,False,False
+fah,2,3,7.04,58,3,1,0,9703,,,True,False
+fah,2,3,29.8,206,3,1,0,9703,9703,1,True,True
+fah,3,1,10.52,85,4,0,0,9895,,,True,False
+fah,3,2,16.68,95,4,0,0,9729,,,True,False
+fah,3,3,18.39,113,4,0,0,9545,,,True,False
+fah,3,3,45.58,293,4,0,0,9545,9545,0,True,True
+fah,4,1,15.26,96,5,0,0,9848,,,True,False
+fah,4,2,8.32,51,4,1,0,9848,,,False,False
+fah,4,2,9.59,57,5,2,0,9848,,,False,False
+fah,4,2,12.89,84,5,2,0,9719,,,True,False
+fah,4,3,8.91,56,3,3,0,9719,,,False,False
+fah,4,3,8.93,56,4,4,0,9719,,,False,False
+fah,4,3,12.07,61,3,5,0,9719,,,False,False
+fah,4,3,8.47,52,4,6,0,9719,,,False,False
+fah,4,3,9.15,54,2,7,0,9719,,,False,False
+fah,4,3,4.77,16,1,8,0,9719,,,False,False
+fah,4,3,22.83,126,5,8,0,9491,,,True,False
+fah,4,3,50.98,306,5,8,0,9491,9491,8,True,True
+fah,5,1,25.51,154,7,0,0,9745,,,True,False
+fah,5,2,28.16,144,7,0,0,9464,,,True,False
+fah,5,3,27.16,142,7,0,0,9192,,,True,False
+fah,5,3,80.83,440,7,0,0,9192,9192,0,True,True
+nigga,1,1,12.8,110,3,0,0,9873,,,True,False
+nigga,1,2,14.91,104,3,0,0,9723,,,True,False
+nigga,1,3,10.76,72,3,1,0,9723,,,False,False
+nigga,1,3,18.02,72,3,1,0,9723,,,False,False
+nigga,1,3,14.08,112,2,2,0,9723,,,False,False
+nigga,1,3,11.16,85,2,3,0,9723,,,False,False
+nigga,1,3,13.98,85,2,3,0,9723,,,False,False
+nigga,1,3,16.14,108,3,3,0,9562,,,True,False
+nigga,1,3,43.85,322,3,3,0,9562,9562,3,True,True
+nigga,2,1,7.61,62,3,0,0,9924,,,True,False
+nigga,2,2,7.04,60,3,0,0,9854,,,True,False
+nigga,2,3,6.95,58,3,0,0,9785,,,True,False
+nigga,2,3,21.6,180,3,0,0,9785,9785,0,True,True
+nigga,3,1,11.28,91,4,0,0,9888,,,True,False
+nigga,3,2,16.4,123,4,0,0,9724,,,True,False
+nigga,3,3,13.33,82,3,1,0,9724,,,False,False
+nigga,3,1,16.45,125,4,0,0,9836,,,True,False
+nigga,3,2,10.4,87,4,0,0,9732,,,True,False
+nigga,3,3,13.7,117,4,0,0,9595,,,True,False
+nigga,3,3,40.55,329,4,0,0,9595,9595,0,True,True
+nigga,4,1,8.44,72,5,0,0,9916,,,True,False
+nigga,4,2,8.4,68,5,0,0,9832,,,True,False
+nigga,4,3,8.32,68,5,0,0,9749,,,True,False
+nigga,4,3,25.17,208,5,0,0,9749,9749,0,True,True
+nigga,5,1,18.9,144,7,0,0,9812,,,True,False
+nigga,5,2,14.53,112,7,0,0,9666,,,True,False
+nigga,5,3,16.49,134,7,0,0,9501,,,True,False
+nigga,5,3,49.91,390,7,0,0,9501,9501,0,True,True
+CCCC,1,1,19.97,152,3,0,0,9801,,,True,False
+CCCC,1,2,16.0,117,3,1,0,9801,,,False,False
+CCCC,1,2,8.17,67,1,2,0,9801,,,False,False
+CCCC,1,1,31.05,262,3,0,0,9690,,,True,False
+CCCC,1,2,12.25,102,3,0,0,9567,,,True,False
+CCCC,1,3,10.68,73,3,1,0,9567,,,False,False
+CCCC,1,1,22.91,178,3,0,0,9771,,,True,False
+CCCC,1,2,14.2,104,3,0,0,9629,,,True,False
+CCCC,1,3,13.96,108,3,0,0,9490,,,True,False
+CCCC,1,3,51.07,390,3,0,0,9490,9490,0,True,True
+CCCC,2,1,16.64,102,3,0,0,9834,,,True,False
+CCCC,2,2,17.89,132,3,0,0,9655,,,True,False
+CCCC,2,3,17.31,146,3,0,0,9482,,,True,False
+CCCC,2,3,51.84,380,3,0,0,9482,9482,0,True,True
+CCCC,3,1,18.08,143,4,0,0,9820,,,True,False
+CCCC,3,2,12.14,103,4,0,0,9698,,,True,False
+CCCC,3,3,4.11,34,2,1,0,9698,,,False,False
+CCCC,3,3,12.44,105,4,1,0,9574,,,True,False
+CCCC,3,3,42.67,351,4,1,0,9574,9574,1,True,True
+CCCC,4,1,10.48,78,5,0,0,9896,,,True,False
+CCCC,4,2,9.39,78,5,0,0,9802,,,True,False
+CCCC,4,3,8.95,80,5,0,0,9712,,,True,False
+CCCC,4,3,28.82,236,5,0,0,9712,9712,0,True,True
+CCCC,5,1,19.22,158,7,0,0,9808,,,True,False
+CCCC,5,2,15.63,134,7,0,0,9652,,,True,False
+CCCC,5,3,5.0,30,2,1,0,9652,,,False,False
+CCCC,5,3,8.65,69,4,2,0,9652,,,False,False
+CCCC,5,3,14.76,114,6,3,0,9652,,,False,False
+CCCC,5,3,8.48,70,4,4,0,9652,,,False,False
+CCCC,5,3,12.56,105,6,5,0,9652,,,False,False
+CCCC,5,3,12.68,114,7,5,0,9525,,,True,False
+CCCC,5,3,47.53,406,7,5,0,9525,9525,5,True,True
+i love my job,1,1,10.87,100,3,0,0,9892,,,True,False
+i love my job,1,2,15.61,104,3,0,0,9736,,,True,False
+i love my job,1,3,16.26,104,3,0,0,9573,,,True,False
+i love my job,1,3,42.74,308,3,0,0,9573,9573,0,True,True
+i love my job,2,1,9.29,66,3,0,0,9908,,,True,False
+i love my job,2,2,9.4,64,3,0,0,9814,,,True,False
+i love my job,2,3,4.78,34,2,1,0,9814,,,False,False
+i love my job,2,3,6.55,33,1,2,0,9814,,,False,False
+i love my job,2,3,12.14,72,3,2,0,9692,,,True,False
+i love my job,2,3,30.84,202,3,2,0,9692,9692,2,True,True
+i love my job,3,1,13.23,93,4,0,0,9868,,,True,False
+i love my job,3,2,8.09,54,3,1,0,9868,,,False,False
+i love my job,3,2,16.4,113,4,1,0,9704,,,True,False
+i love my job,3,3,18.48,111,4,1,0,9519,,,True,False
+i love my job,3,3,48.11,317,4,1,0,9519,9519,1,True,True
+i love my job,4,1,10.39,78,5,0,0,9897,,,True,False
+i love my job,4,2,10.46,78,5,0,0,9792,,,True,False
+i love my job,4,3,15.26,98,5,0,0,9639,,,True,False
+i love my job,4,3,36.12,254,5,0,0,9639,9639,0,True,True
+i love my job,5,1,19.34,124,7,0,0,9807,,,True,False
+i love my job,5,2,22.38,132,7,0,0,9583,,,True,False
+i love my job,5,3,28.83,128,7,0,0,9295,,,True,False
+i love my job,5,3,70.55,384,7,0,0,9295,9295,0,True,True
+lyan,1,1,14.16,100,3,0,0,9859,,,True,False
+lyan,1,2,27.05,118,3,0,0,9588,,,True,False
+lyan,1,3,12.41,80,3,1,0,9588,,,False,False
+Lyan,1,1,41.62,98,3,0,0,9584,,,True,False
+Lyan,1,2,25.66,113,1,1,0,9584,,,False,False
+Lyan,1,1,16.5,106,3,0,0,9835,,,True,False
+Lyan,1,2,12.39,56,2,1,0,9835,,,False,False
+Lyan,1,1,20.17,104,3,0,0,9799,,,True,False
+Lyan,1,2,38.08,172,3,0,0,9418,,,True,False
+Lyan,1,3,3.71,11,0,1,0,9418,,,False,False
+Lyan,1,3,5.31,25,0,2,0,9418,,,False,False
+Lyan,1,3,19.69,60,2,3,0,9418,,,False,False
+monica,1,1,13.17,100,3,0,0,9869,,,True,False
+monica,1,2,15.26,106,3,0,0,9716,,,True,False
+monica,1,3,9.35,56,2,1,0,9716,,,False,False
+monica,1,3,17.1,108,3,1,0,9545,,,True,False
+monica,1,3,45.53,314,3,1,0,9545,9545,1,True,True
+monica,2,1,9.92,66,3,0,0,9901,,,True,False
+monica,2,2,8.04,62,3,0,0,9821,,,True,False
+monica,2,3,7.32,60,3,0,0,9748,,,True,False
+monica,2,3,25.28,188,3,0,0,9748,9748,0,True,True
+monica,3,1,14.22,93,4,0,0,9858,,,True,False
+monica,3,2,18.18,109,4,0,0,9676,,,True,False
+monica,3,3,19.75,95,4,0,0,9479,,,True,False
+monica,3,3,52.15,297,4,0,0,9479,9479,0,True,True
+kkkkkk,1,1,18.81,116,3,0,0,9812,,,True,False
+kkkkkk,1,2,12.15,78,1,1,0,9812,,,False,False
+kkkkkk,1,1,14.11,102,3,0,0,9859,,,True,False
+kkkkkk,1,2,21.63,113,2,1,0,9859,,,False,False
+kkkkkk,1,2,13.57,54,1,2,0,9859,,,False,False
+kkkkkk,1,2,2.96,0,0,3,0,9859,,,False,False
+kkkkkk,1,2,28.76,132,3,3,0,9572,,,True,False
+kkkkkk,1,3,26.63,126,2,4,0,9572,,,False,False
+kkkkkk,1,3,3.82,8,0,5,0,9572,,,False,False
+kkkkkk,1,3,26.66,156,2,6,0,9572,,,False,False
+kkkkkk,1,3,17.99,120,2,7,0,9572,,,False,False
+kkkkkk,1,3,14.88,104,2,8,0,9572,,,False,False
+u,1,1,11.47,100,3,0,0,9886,,,True,False
+u,1,2,15.39,108,3,0,0,9732,,,True,False
+u,1,3,16.76,104,3,0,0,9564,,,True,False
+u,1,3,43.61,312,3,0,0,9564,9564,0,True,True
+monica,4,1,8.51,64,5,0,0,9915,,,True,False
+monica,4,2,9.89,68,5,0,0,9816,,,True,False
+monica,4,3,7.67,41,4,1,0,9816,,,False,False
+monica,4,3,17.62,96,5,1,0,9640,,,True,False
+monica,4,3,36.02,228,5,1,0,9640,9640,1,True,True
+h,1,1,12.74,104,3,0,0,9873,,,True,False
+h,1,2,15.91,106,3,0,0,9714,,,True,False
+wow,1,1,11.43,100,3,0,0,9886,,,True,False
+wow,1,2,15.09,102,3,0,0,9735,,,True,False
+wow,1,3,16.12,108,3,0,0,9574,,,True,False
+wow,1,3,42.65,310,3,0,0,9574,9574,0,True,True
+wow,2,1,7.56,60,3,0,0,9925,,,True,False
+wow,2,2,8.64,62,3,0,0,9839,,,True,False
+wow,2,1,7.35,62,3,0,0,9927,,,True,False
+wow,2,2,12.53,88,3,0,0,9802,,,True,False
+wow,2,3,9.21,38,1,1,0,9802,,,False,False
+wow,2,1,7.39,60,3,0,0,9927,,,True,False
+wow,2,2,11.7,78,3,0,0,9810,,,True,False
+wow,2,3,15.16,82,3,0,0,9658,,,True,False
+wow,2,3,34.26,220,3,0,0,9658,9658,0,True,True
+J,1,1,21.03,106,3,0,0,9790,,,True,False
+J,1,2,31.28,121,3,1,0,9790,,,False,False
+J,1,1,15.73,100,3,0,0,9843,,,True,False
+J,1,2,24.12,58,2,1,0,9843,,,False,False
+J,1,2,16.94,104,3,1,0,9674,,,True,False
+J,1,3,16.38,106,3,1,0,9510,,,True,False
+J,1,3,49.05,310,3,1,0,9510,9510,1,True,True
+J,2,1,25.95,144,3,0,0,9741,,,True,False
+J,2,2,8.03,52,2,1,0,9741,,,False,False
+J,2,1,17.29,116,3,0,0,9828,,,True,False
+J,2,2,12.4,70,3,0,0,9704,,,True,False
+J,2,3,7.21,60,3,0,0,9632,,,True,False
+J,2,3,36.9,246,3,0,0,9632,9632,0,True,True
+J,3,1,21.49,87,4,0,0,9786,,,True,False
+J,3,2,11.76,58,3,1,0,9786,,,False,False
+J,3,2,7.06,37,3,2,0,9786,,,False,False
+J,3,2,15.91,80,3,3,0,9786,,,False,False
+J,3,2,6.4,34,2,4,0,9786,,,False,False

@@ -1,7 +1,30 @@
+# Python cache files
 __pycache__/
-*.pyc
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
 venv/
+env/
+ENV/
+
+# Environment variables
 .env
+.env.*
+
+# IDE / Editor settings
 .vscode/
 .idea/
-.ipynb_checkpoints
+
+# Logs and temporary files
+*.log
+*.tmp
+*.swp
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Game data (optional — remove this line if you want to include saved data)
+# data/game_data.csv

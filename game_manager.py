@@ -255,13 +255,17 @@ class GameManager:
     def _build_name_screen(self):
         self.screen_state = 'name'
         self._name_input  = TextInput('Your name...')
-        self._name_input.use_thai = True 
+        self._name_input.use_thai = True
+        self._name_back_rect  = pygame.Rect(0, 0, 0, 0)
+        self._name_howto_rect = pygame.Rect(0, 0, 0, 0)
         self._set_items([
             {'type':'title',   'text':'Enter Your Name'},
             {'type':'space',   'h':6},
             {'type':'input',   'widget': self._name_input, 'font':'thai'},
             {'type':'body',    'lines':['Press Enter to continue'],
              'color': (100,100,140)},
+            {'type':'body',    'lines':['First time playing?', '→  How to Play'],
+             'color': C_CYAN},
         ])
 
     def _build_stage_select(self):
@@ -512,6 +516,15 @@ class GameManager:
                         self._inputs       = []
                         return
 
+        # Name screen — Back และ How to Play
+        if self.screen_state == 'name' and event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
+            if hasattr(self, '_name_back_rect') and self._name_back_rect.collidepoint(event.pos):
+                self._build_menu()
+                return
+            if hasattr(self, '_name_howto_rect') and self._name_howto_rect.collidepoint(event.pos):
+                self._launch_tutorial()
+                return
+
         # Text inputs
         for inp in self._inputs:
             if inp.handle_event(event):   # Enter pressed
@@ -633,6 +646,48 @@ class GameManager:
             self._play_bgm('game')
 
 
+
+    def _draw_name_overlays(self, sw, sh):
+        """วาด Back ซ้ายบน และแก้สี How to Play ทับบน panel"""
+        from ui import PAD, GAP, TextInput
+        pw  = max(320, min(480, int(sw * 0.60)))
+        ft_h = self.fonts['title'].get_linesize() + GAP + 4
+        sp_h = 6
+        inp_h = TextInput.H + GAP
+        fb_h1 = self.fonts['body'].get_linesize() + GAP  # Press Enter line
+        fb_ls = self.fonts['body'].get_linesize()
+        # คำนวณ ph เหมือน Panel
+        ch = ft_h + sp_h + inp_h + fb_h1 + fb_ls * 2 + GAP
+        ph = min(ch + PAD * 2 + 8, sh - 20)
+        px = (sw - pw) // 2
+        py = max(10, (sh - ph) // 2)
+        cx = px + pw // 2
+
+        # Back ← ซ้ายบน
+        bx = px + 14
+        by = py + 10
+        hovered_back = self._name_back_rect.collidepoint(pygame.mouse.get_pos())
+        txt = self.fsm.render('← Back', True, C_GRAY if hovered_back else C_DIM)
+        self._name_back_rect = pygame.Rect(bx, by, txt.get_width() + 8, txt.get_height() + 4)
+        self.screen.blit(txt, (bx + 4, by + 2))
+
+        # How to Play — วาดทับ body lines สองบรรทัดล่าง
+        howto_y = py + PAD + ft_h + sp_h + inp_h + fb_h1
+        hovered_howto = self._name_howto_rect.collidepoint(pygame.mouse.get_pos())
+
+        # cover พื้นหลังเดิมก่อน
+        cover = pygame.Surface((pw - 40, fb_ls * 2 + 4), pygame.SRCALPHA)
+        cover.fill((18, 18, 46, 255))
+        self.screen.blit(cover, (px + 20, howto_y - 2))
+
+        l1 = self.fb.render('First time playing?', True, C_CYAN)
+        l2_col = (255, 255, 80) if hovered_howto else C_CHECKPOINT
+        l2 = self.fb.render('→  How to Play', True, l2_col)
+        self.screen.blit(l1, l1.get_rect(centerx=cx, top=howto_y))
+        self.screen.blit(l2, l2.get_rect(centerx=cx, top=howto_y + fb_ls))
+        self._name_howto_rect = pygame.Rect(
+            cx - max(l1.get_width(), l2.get_width())//2, howto_y,
+            max(l1.get_width(), l2.get_width()), fb_ls * 2)
 
     def _launch_graphs(self):
         from data_window import open_data_window
@@ -813,6 +868,8 @@ class GameManager:
             if self._items:
                 self.panel.layout(self._items)
                 self.panel.draw(self.screen, self._items)
+                if self.screen_state == 'name':
+                    self._draw_name_overlays(sw, sh)
 
     # Stage Select
     def _draw_stage_select(self, sw, sh):

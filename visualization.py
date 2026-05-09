@@ -29,31 +29,32 @@ def _apply_style(ax, title=''):
 
 
 def show_data_analysis():
+    import tempfile, os, subprocess, sys
+
     records = get_records()
+
+    # --- วาด figure ---
+    fig = plt.figure(figsize=(14, 9), facecolor=DARK_BG)
+    fig.canvas.manager.set_window_title('Echo Maze — Data Analysis Report')
+
     if not records:
-        fig, ax = plt.subplots(facecolor=DARK_BG)
+        ax = fig.add_subplot(111)
         ax.set_facecolor(DARK_BG)
         ax.text(0.5, 0.5, 'No data yet — play a game first!',
                 ha='center', va='center', color=GRAY,
                 fontfamily='monospace', transform=ax.transAxes)
         ax.axis('off')
-    import tempfile, os, subprocess, sys
-    tmp = tempfile.mktemp(suffix='.png')
-    plt.savefig(tmp, dpi=110, bbox_inches='tight', facecolor=DARK_BG)
-    plt.close()
-    try:
-        if sys.platform == 'win32':
-            os.startfile(tmp)
-        elif sys.platform == 'darwin':
-            subprocess.Popen(['open', tmp])
-        else:
-            subprocess.Popen(['xdg-open', tmp])
-    except Exception as e:
-        print(f'Cannot open chart: {e}')
+        tmp = tempfile.mktemp(suffix='.png')
+        plt.savefig(tmp, dpi=110, bbox_inches='tight', facecolor=DARK_BG)
+        plt.close()
+        try:
+            if sys.platform == 'win32':   os.startfile(tmp)
+            elif sys.platform == 'darwin': subprocess.Popen(['open', tmp])
+            else:                          subprocess.Popen(['xdg-open', tmp])
+        except Exception as e:
+            print(f'Cannot open chart: {e}')
         return
 
-    fig = plt.figure(figsize=(14, 9), facecolor=DARK_BG)
-    fig.canvas.manager.set_window_title('Echo Maze — Data Analysis Report')
     gs = gridspec.GridSpec(3, 3, figure=fig, hspace=0.55, wspace=0.4)
 
     # Summary Stats Table 
@@ -157,7 +158,7 @@ def show_data_analysis():
             box_data.append(vals)
             box_labels.append(f'R{rnd}')
     if box_data:
-        bp = ax_box.boxplot(box_data, labels=box_labels, patch_artist=True,
+        bp = ax_box.boxplot(box_data, tick_labels=box_labels, patch_artist=True,
                             medianprops=dict(color=CYAN, linewidth=2),
                             whiskerprops=dict(color=GRAY),
                             capprops=dict(color=GRAY),
@@ -203,4 +204,13 @@ def show_data_analysis():
     ax_comp.set_xlim(0, 115)
     _apply_style(ax_comp, 'Completion Rate / Stage')
 
-    plt.show()
+    # save แล้วเปิดด้วย default viewer
+    tmp = tempfile.mktemp(suffix='.png')
+    plt.savefig(tmp, dpi=110, bbox_inches='tight', facecolor=DARK_BG)
+    plt.close()
+    try:
+        if sys.platform == 'win32':    os.startfile(tmp)
+        elif sys.platform == 'darwin': subprocess.Popen(['open', tmp])
+        else:                          subprocess.Popen(['xdg-open', tmp])
+    except Exception as e:
+        print(f'Cannot open chart: {e}')

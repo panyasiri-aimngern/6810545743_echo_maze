@@ -17,9 +17,9 @@ VIEWS = [
     'Summary Statistics Table',
     'Bar Chart — Avg Survival Time / Stage',
     'Line Graph — Avg Steps / Round',
-    'Boxplot — Ghost Collisions / Round',
+    'Boxplot — Ghost Collisions / Round & Stage',
     'Scatter Plot — Steps vs Score',
-    'Stage Clear Rate — % of Stages Cleared',
+    'Bar Chart — Stage Clear Rate / Stage',
 ]
 
 def _style_ax(ax, title='', xlabel='', ylabel=''):
@@ -119,90 +119,112 @@ def draw_line_steps(fig):
     ax.legend(facecolor=PANEL, edgecolor=GRID, labelcolor=WHITE, fontsize=9)
     _style_ax(ax, 'Avg Steps over Rounds', xlabel='Round', ylabel='Avg Steps')
 
+def _make_boxplot(ax, box_data, box_labels, title):
+    box_fc = ['#0d2040', '#0d2830', '#1a1030', '#1a0d30', '#0d1a30']
+    box_ec = ['#0088dd', '#00aacc', '#6644cc', '#aa44cc', '#2266cc']
+    bp = ax.boxplot(
+        box_data, tick_labels=box_labels, patch_artist=True,
+        medianprops=dict(color=CYAN, linewidth=2.5),
+        whiskerprops=dict(color='#5588aa', linewidth=1.8, linestyle='--'),
+        capprops=dict(color='#5588aa', linewidth=2),
+        flierprops=dict(marker='D', markerfacecolor=ORANGE, markeredgecolor=RED,
+                        markersize=6, alpha=0.85, linestyle='none'),
+        meanprops=dict(marker='s', markerfacecolor=GREEN,
+                       markeredgecolor=GREEN, markersize=6),
+        showmeans=True, zorder=3,
+    )
+    for patch, fc, ec in zip(bp['boxes'],
+                              box_fc[:len(box_data)],
+                              box_ec[:len(box_data)]):
+        patch.set_facecolor(fc); patch.set_edgecolor(ec); patch.set_linewidth(2)
+    ax.yaxis.set_major_locator(plt.MaxNLocator(integer=True))
+    ymin, ymax = ax.get_ylim()
+    ax.set_ylim(ymin, ymax * 1.25)
+    _style_ax(ax, title, ylabel='Ghost Hits')
+    return bp
+
+
+def _draw_stats_table(ax, stats_per, labels):
+    ax.set_facecolor('#0d0d25')
+    ax.axis('off')
+    col_labels = ['', 'Mean', 'Median', 'Min', 'Max', 'SD', 'N']
+    rows = []
+    for s, lbl in zip(stats_per, labels):
+        rows.append([lbl,
+            f"{s['mean']:.2f}", f"{s['median']:.1f}",
+            str(s['min']), str(s['max']),
+            f"{s['sd']:.2f}", str(s['n'])])
+    tbl = ax.table(cellText=rows, colLabels=col_labels,
+                   loc='center', cellLoc='center')
+    tbl.auto_set_font_size(False)
+    tbl.set_fontsize(7.5)
+    tbl.scale(1, 1.2)
+    for (row, col), cell in tbl.get_celld().items():
+        cell.set_edgecolor(GRID)
+        if row == 0:
+            cell.set_facecolor('#0d0d30')
+            cell.set_text_props(color=GRAY, fontfamily='monospace', fontweight='bold')
+        elif col == 0:
+            cell.set_facecolor('#1a1a3a')
+            cell.set_text_props(color=WHITE, fontfamily='monospace')
+        else:
+            cell.set_facecolor('#12122e' if row % 2 == 0 else '#1a1a3a')
+            cell.set_text_props(color=CYAN, fontfamily='monospace')
+
+
 def draw_boxplot(fig):
     records = ST.get_records()
     if not records:
         ax = fig.add_subplot(111); _no_data(ax); return
 
-    box_data = []; box_labels = []; stats_per = []
+    # เตรียมข้อมูล per Round
+    rnd_data = []; rnd_labels = []; rnd_stats = []
     for rnd in [1, 2, 3]:
         vals = [r['ghost_hits'] for r in records if r['round'] == rnd]
         if vals:
-            box_data.append(vals)
-            box_labels.append(f'Round {rnd}')
-            stats_per.append({
-                'round':  rnd,
-                'mean':   np.mean(vals),
-                'median': np.median(vals),
-                'min':    int(np.min(vals)),
-                'max':    int(np.max(vals)),
-                'sd':     np.std(vals),
-                'n':      len(vals),
+            rnd_data.append(vals)
+            rnd_labels.append(f'Round {rnd}')
+            rnd_stats.append({
+                'mean': np.mean(vals), 'median': np.median(vals),
+                'min': int(np.min(vals)), 'max': int(np.max(vals)),
+                'sd': np.std(vals), 'n': len(vals),
             })
-    if not box_data:
+
+    # เตรียมข้อมูล per Stage
+    stg_data = []; stg_labels = []; stg_stats = []
+    for stg in range(1, 6):
+        vals = [r['ghost_hits'] for r in records if r['stage'] == stg]
+        if vals:
+            stg_data.append(vals)
+            stg_labels.append(f'Stage {stg}')
+            stg_stats.append({
+                'mean': np.mean(vals), 'median': np.median(vals),
+                'min': int(np.min(vals)), 'max': int(np.max(vals)),
+                'sd': np.std(vals), 'n': len(vals),
+            })
+
+    if not rnd_data and not stg_data:
         ax = fig.add_subplot(111); _no_data(ax); return
 
-    #layout
-    gs = fig.add_gridspec(2, 1, height_ratios=[4, 1], hspace=0.25)
-    ax      = fig.add_subplot(gs[0])
-    ax_info = fig.add_subplot(gs[1])
+    gs = fig.add_gridspec(2, 2, height_ratios=[3.2, 1], hspace=0.28, wspace=0.22)
+    ax_rnd  = fig.add_subplot(gs[0, 0])
+    ax_rtbl = fig.add_subplot(gs[1, 0])
+    ax_stg  = fig.add_subplot(gs[0, 1])
+    ax_stbl = fig.add_subplot(gs[1, 1])
 
-    #boxplot
-    bp = ax.boxplot(
-        box_data, labels=box_labels, patch_artist=True,
-        medianprops=dict(color=CYAN, linewidth=2.5),
-        whiskerprops=dict(color='#5588aa', linewidth=1.8, linestyle='--'),
-        capprops=dict(color='#5588aa', linewidth=2),
-        flierprops=dict(marker='D', markerfacecolor=ORANGE, markeredgecolor=RED,
-                        markersize=8, alpha=0.85, linestyle='none'),
-        meanprops=dict(marker='s', markerfacecolor=GREEN,
-                       markeredgecolor=GREEN, markersize=7),
-        showmeans=True, zorder=3,
-    )
-    box_fc = ['#0d2040', '#0d2830', '#1a1030']
-    box_ec = ['#0088dd', '#00aacc', '#6644cc']
-    for patch, fc, ec in zip(bp['boxes'], box_fc, box_ec):
-        patch.set_facecolor(fc); patch.set_edgecolor(ec); patch.set_linewidth(2)
+    fig.subplots_adjust(left=0.06, right=0.97, top=0.88, bottom=0.08)
 
-    legend_items = [
-        mpatches.Patch(facecolor='#0d2040', edgecolor='#0088dd', label='IQR Box'),
-        plt.Line2D([0],[0], color=CYAN, linewidth=2, label='Median'),
-        plt.Line2D([0],[0], marker='s', color='none',
-                   markerfacecolor=GREEN, markersize=7, label='Mean'),
-        plt.Line2D([0],[0], marker='D', color='none',
-                   markerfacecolor=ORANGE, markeredgecolor=RED,
-                   markersize=8, label='Outlier'),
-    ]
-    ax.legend(handles=legend_items, facecolor=PANEL, edgecolor=GRID,
-              labelcolor=WHITE, fontsize=9, loc='upper left')
-    ax.yaxis.set_major_locator(plt.MaxNLocator(integer=True))
-    _style_ax(ax, 'Ghost Collisions per Round', ylabel='Ghost Hits')
+    if rnd_data:
+        _make_boxplot(ax_rnd, rnd_data, rnd_labels, 'Ghost Collisions per Round')
+        _draw_stats_table(ax_rtbl, rnd_stats, rnd_labels)
+    else:
+        _no_data(ax_rnd); ax_rtbl.axis('off')
 
-    #annotation box
-    ax_info.set_facecolor(PANEL)
-    ax_info.axis('off')
-    n = len(stats_per)
-    ax_info.set_xlim(0, n)
-    ax_info.set_ylim(0, 1)
-
-    for i, s in enumerate(stats_per):
-        cx = i + 0.5
-        txt = (f"mean={s['mean']:.2f}\n"
-               f"med={s['median']:.1f}\n"
-               f"min={s['min']}  max={s['max']}\n"
-               f"SD={s['sd']:.2f}  n={s['n']}")
-        ax_info.text(
-            cx, 0.5, txt,
-            ha='center', va='center',
-            color=CYAN, fontsize=9, fontfamily='monospace',
-            linespacing=1.55,
-            bbox=dict(
-                boxstyle='round,pad=0.55',
-                facecolor=box_fc[i % len(box_fc)],
-                edgecolor=box_ec[i % len(box_ec)],
-                linewidth=1.8,
-            )
-        )
+    if stg_data:
+        _make_boxplot(ax_stg, stg_data, stg_labels, 'Ghost Collisions per Stage')
+        _draw_stats_table(ax_stbl, stg_stats, stg_labels)
+    else:
+        _no_data(ax_stg); ax_stbl.axis('off')
 
 def draw_scatter(fig):
     records = ST.get_records(); ax = fig.add_subplot(111)
@@ -303,16 +325,152 @@ def open_data_window():
                             activeforeground=GREEN, cursor='hand2', relief='flat')
     refresh_btn.pack(side='left', padx=10)
 
+    # legend inline ชิดขวา — แสดงเฉพาะตอนเลือก Boxplot view
+    legend_frame = tk.Frame(ctrl, bg=DARK)
+    legend_frame.pack(side='right', padx=(0, 10))
+
+    _LEGEND_ITEMS = [
+        ('▬', CYAN,      'Median'),
+        ('■', GREEN,     'Mean'),
+        ('◆', ORANGE,    'Outlier'),
+        ('□', '#0088dd', 'IQR Box'),
+    ]
+    legend_labels = []
+    for sym, col, txt in _LEGEND_ITEMS:
+        lbl = tk.Label(legend_frame, text=f'{sym} {txt}',
+                       bg=DARK, fg=col, font=('Courier New', 9))
+        legend_labels.append(lbl)
+
+    def _update_legend_visibility(*_):
+        is_boxplot = 'Boxplot' in selected.get()
+        for lbl in legend_labels:
+            if is_boxplot:
+                lbl.pack(side='left', padx=5)
+            else:
+                lbl.pack_forget()
+
+    selected.trace_add('write', _update_legend_visibility)
+    _update_legend_visibility()
+
     fig = plt.Figure(facecolor=DARK, tight_layout=True)
     canvas = FigureCanvasTkAgg(fig, master=root)
     canvas.get_tk_widget().configure(bg=DARK)
-    canvas.get_tk_widget().pack(fill='both', expand=True, padx=14, pady=(0, 14))
+    canvas.get_tk_widget().pack(fill='both', expand=True, padx=14, pady=(0, 4))
+
+    # insight label
+    insight_label = tk.Label(
+        root, text='', bg=PANEL, fg=CYAN,
+        font=('Courier New', 9), anchor='w',
+        justify='left', wraplength=900, pady=5, padx=12
+    )
+    insight_label.pack(fill='x', padx=14, pady=(0, 8))
+
+    def _calc_insight(view: str, records: list) -> str:
+        if not records:
+            return 'No data yet — play a game to generate statistics.'
+
+        if 'Summary' in view:
+            n = len(records)
+            players = len({r['player'] for r in records})
+            stages_played = len({r['stage'] for r in records})
+            avg_hits = sum(r['ghost_hits'] for r in records) / n
+            return (f'Total: {n} rounds recorded across {players} player(s) and {stages_played} stage(s).  '
+                    f'Avg ghost hits per round: {avg_hits:.2f}')
+
+        elif 'Survival' in view:
+            stages = range(1, 6)
+            avgs = {}
+            for s in stages:
+                sr = [r['survival_time'] for r in records if r['stage'] == s and r['completed']]
+                if sr: avgs[s] = sum(sr) / len(sr)
+            if not avgs:
+                return 'No completed rounds yet.'
+            best  = max(avgs, key=avgs.get)
+            worst = min(avgs, key=avgs.get)
+            ratio = avgs[best] / avgs[worst] if avgs[worst] > 0 else 0
+            return (f'Stage {best} has the highest avg survival time ({avgs[best]:.1f}s).  '
+                    f'Stage {worst} is the fastest ({avgs[worst]:.1f}s). Difference Ratio: {ratio:.1f} x')
+
+        elif 'Steps' in view and 'Score' not in view:
+            avgs = {}
+            for rnd in [1, 2, 3]:
+                rr = [r['steps'] for r in records if r['round'] == rnd]
+                if rr: avgs[rnd] = sum(rr) / len(rr)
+            if len(avgs) < 2:
+                return 'Not enough round data to compare.'
+            r1_avg = avgs.get(1, 0)
+            r2_avg = avgs.get(2, 0)
+            r3_avg = avgs.get(3, 0)
+            mn, mx = min(avgs.values()), max(avgs.values())
+            change = ((mx - mn) / mn * 100) if mn > 0 else 0
+            if r2_avg < r1_avg and r3_avg > r2_avg:
+                trend_desc = f'Steps dip at Round 2 ({r2_avg:.1f}) then rise at Round 3 ({r3_avg:.1f})'
+            elif r3_avg > r1_avg:
+                trend_desc = f'Steps increase from Round 1 ({r1_avg:.1f}) to Round 3 ({r3_avg:.1f})'
+            else:
+                trend_desc = f'Steps decrease from Round 1 ({r1_avg:.1f}) to Round 3 ({r3_avg:.1f})'
+            return (f'{trend_desc}.  '
+                    f'Overall range: {change:.1f}% — players adjust movement when ghosts appear.')
+
+        elif 'Boxplot' in view:
+            r1 = [r['ghost_hits'] for r in records if r['round'] == 1]
+            r3 = [r['ghost_hits'] for r in records if r['round'] == 3]
+            s_hits = {s: [r['ghost_hits'] for r in records if r['stage'] == s] for s in range(1, 6)}
+            s_hits = {s: v for s, v in s_hits.items() if v}
+            parts = []
+            if r1 and r3:
+                m1, m3 = sum(r1)/len(r1), sum(r3)/len(r3)
+                if m1 > 0:
+                    parts.append(f'Round 3 avg hits ({m3:.2f}) is {m3/m1:.1f}× higher than Round 1 ({m1:.2f}).')
+                else:
+                    parts.append(f'Round 1 avg hits = 0 — ghosts only appear from Round 2 onward.  Round 3 avg: {m3:.2f}.')
+            if s_hits:
+                hardest = max(s_hits, key=lambda s: sum(s_hits[s])/len(s_hits[s]))
+                easiest = min(s_hits, key=lambda s: sum(s_hits[s])/len(s_hits[s]))
+                h_avg = sum(s_hits[hardest])/len(s_hits[hardest])
+                e_avg = sum(s_hits[easiest])/len(s_hits[easiest])
+                parts.append(f'Stage {hardest} has most ghost hits on avg ({h_avg:.2f}) — Stage {easiest} is easiest ({e_avg:.2f}).')
+            return '  '.join(parts) if parts else 'Not enough data.'
+
+        elif 'Scatter' in view:
+            pts = [(r['steps'], r['score']) for r in records if r['steps'] > 0 and r['score'] > 0]
+            if len(pts) < 3:
+                return 'Not enough data points for correlation analysis.'
+            import numpy as np
+            xs = [p[0] for p in pts]
+            ys = [p[1] for p in pts]
+            r = np.corrcoef(xs, ys)[0, 1]
+            direction = 'negative' if r < 0 else 'positive'
+            strength = 'strong' if abs(r) > 0.6 else 'moderate' if abs(r) > 0.3 else 'weak'
+            return (f'Correlation (r = {r:.2f}): {strength} {direction} relationship.  '
+                    f'{"Fewer steps → higher score — efficient routing pays off." if r < -0.3 else "Step count has little impact on score."}')
+
+        elif 'Clear' in view:
+            pcts = {}
+            for s in range(1, 6):
+                att = [r for r in records if r['stage'] == s and r['round'] == 1]
+                clr = [r for r in records if r['stage'] == s and r['is_stage_clear']]
+                if att: pcts[s] = len(clr) / len(att) * 100
+            if not pcts:
+                return 'No stage attempt data yet.'
+            best  = max(pcts, key=pcts.get)
+            worst = min(pcts, key=pcts.get)
+            perfect = [s for s, p in pcts.items() if p == 100]
+            parts = [f'Stage {worst} is hardest ({pcts[worst]:.0f}% clear rate).']
+            if perfect:
+                parts.append(f'Stage(s) {", ".join(map(str, perfect))} cleared perfectly (100%).')
+            return '  '.join(parts)
+
+        return ''
 
     def refresh(*_):
         fig.clear()
+        records = ST.get_records()
         renderer = RENDERERS.get(selected.get(), draw_summary)
         renderer(fig)
         canvas.draw()
+        insight = _calc_insight(selected.get(), records)
+        insight_label.config(text=f'  ▸  {insight}' if insight else '')
 
     combo.bind('<<ComboboxSelected>>', refresh)
     refresh_btn.config(command=refresh)
@@ -321,3 +479,4 @@ def open_data_window():
 
 if __name__ == '__main__':
     open_data_window()
+

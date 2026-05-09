@@ -247,7 +247,6 @@ def open_tutorial():
     scrollbar     = tk.Scrollbar(content_outer, orient='vertical',
                                   command=canvas_scroll.yview)
     canvas_scroll.configure(yscrollcommand=scrollbar.set)
-    scrollbar.pack(side='right', fill='y')
     canvas_scroll.pack(side='left', fill='both', expand=True)
 
     content = tk.Frame(canvas_scroll, bg=DARK)
@@ -298,6 +297,13 @@ def open_tutorial():
         page = pages[idx[0]]
         title_var.set(page['title'])
         page_lbl.config(text=f'{idx[0]+1} / {total}')
+
+        # Only pages 4 and 6 (index 3 and 5) need scrolling
+        SCROLLABLE_PAGES = {3, 5}
+        if idx[0] in SCROLLABLE_PAGES:
+            scrollbar.pack(side='right', fill='y')
+        else:
+            scrollbar.pack_forget()
 
         btn_prev.config(fg=GRAY if idx[0] == 0 else WHITE,
                         cursor='arrow' if idx[0] == 0 else 'hand2')

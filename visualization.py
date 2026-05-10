@@ -33,7 +33,6 @@ def show_data_analysis():
 
     records = get_records()
 
-    # --- วาด figure ---
     fig = plt.figure(figsize=(14, 9), facecolor=DARK_BG)
     fig.canvas.manager.set_window_title('Echo Maze — Data Analysis Report')
 
@@ -204,7 +203,6 @@ def show_data_analysis():
     ax_comp.set_xlim(0, 115)
     _apply_style(ax_comp, 'Completion Rate / Stage')
 
-    # save แล้วเปิดด้วย default viewer
     tmp = tempfile.mktemp(suffix='.png')
     plt.savefig(tmp, dpi=110, bbox_inches='tight', facecolor=DARK_BG)
     plt.close()

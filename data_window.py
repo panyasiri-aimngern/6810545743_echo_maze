@@ -177,7 +177,6 @@ def draw_boxplot(fig):
     if not records:
         ax = fig.add_subplot(111); _no_data(ax); return
 
-    # เตรียมข้อมูล per Round
     rnd_data = []; rnd_labels = []; rnd_stats = []
     for rnd in [1, 2, 3]:
         vals = [r['ghost_hits'] for r in records if r['round'] == rnd]
@@ -190,7 +189,6 @@ def draw_boxplot(fig):
                 'sd': np.std(vals), 'n': len(vals),
             })
 
-    # เตรียมข้อมูล per Stage
     stg_data = []; stg_labels = []; stg_stats = []
     for stg in range(1, 6):
         vals = [r['ghost_hits'] for r in records if r['stage'] == stg]
@@ -325,7 +323,6 @@ def open_data_window():
                             activeforeground=GREEN, cursor='hand2', relief='flat')
     refresh_btn.pack(side='left', padx=10)
 
-    # legend inline ชิดขวา — แสดงเฉพาะตอนเลือก Boxplot view
     legend_frame = tk.Frame(ctrl, bg=DARK)
     legend_frame.pack(side='right', padx=(0, 10))
 

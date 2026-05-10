@@ -32,7 +32,6 @@ class GameManager:
                 except Exception: pass
             return pygame.font.SysFont('monospace', size, bold=bold)
         def mf_thai(size, bold=False):
-            """Font with Thai support — ลองหา path จริงของ font บน Windows ก่อน"""
             import os, sys
             win_fonts = os.environ.get('WINDIR', r'C:\Windows')
             candidates_path = [
@@ -70,7 +69,6 @@ class GameManager:
 
     #Background
     def _load_bg(self):
-        """Load background image — ค้นหาใน assets/ และ root folder."""
         import os
         self._bg_image = None
         self._bg_frames = []
@@ -102,7 +100,6 @@ class GameManager:
 
     #Sound
     def _init_sounds(self):
-        """โหลดเสียงทั้งหมด — mixer 8 channels, grace ใช้ channel 0 เฉพาะ"""
         import os
         self._snd_on = True
         self._sounds = {}         
@@ -648,7 +645,6 @@ class GameManager:
 
 
     def _draw_name_overlays(self, sw, sh):
-        """วาด Back ซ้ายบน และแก้สี How to Play ทับบน panel"""
         from ui import PAD, GAP, TextInput
         pw  = max(320, min(480, int(sw * 0.60)))
         ft_h = self.fonts['title'].get_linesize() + GAP + 4
@@ -905,7 +901,6 @@ class GameManager:
 
     # Leaderboard
     def _compute_lb_layout(self, sw, sh):
-        """Compute leaderboard rects without drawing — safe to call before draw."""
         pw = min(380, sw-40); ph = min(340, sh-40)
         px = (sw-pw)//2;      py = (sh-ph)//2
         tw = (pw-44)//2
